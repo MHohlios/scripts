@@ -1,24 +1,24 @@
 #/bin/bash
-if [ `id -u` -ne 0 ]
-  then echo Please run this script as root or using sudo!
+if [ `id -u` -eq 0 ]
+  then echo Please do not run this scirpt as root!
   exit
 fi
-
 #Install dependencies
-apt-get update
-apt-get install curl
-apt-get install zsh
-apt-get install git
+echo "Installing dependencies..."
+sudo apt-get -qq update
+sudo apt-get -qq install curl zsh git
 
 #Install Oh My Zsh
+echo "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-chsh -s $(which zsh)
 
 #Install Starship
+echo "Installing Starship..."
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" "" -f
 
 #Backup .zshrc file
+echo "Backing up .zshrc file..."
 mv ~/.zshrc ~/.zshrc.bak
 
 #Create new .zshrc file
@@ -36,4 +36,5 @@ echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 #Source .zshrc
 echo 'Installation complete!'
+echo `Please run "chsh -s $(which zsh)"'
 echo 'Please run "source ~/.zshrc"'
