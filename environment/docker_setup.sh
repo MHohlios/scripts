@@ -18,3 +18,7 @@ echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+usermod -a -G docker $USER
+
+echo 'Installation complete!'
+echo 'Please run "newgrp docker" or log out and log back in to apply the changes'

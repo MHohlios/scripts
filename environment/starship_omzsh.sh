@@ -22,17 +22,17 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)" "" -f
 mv ~/.zshrc ~/.zshrc.bak
 
 #Create new .zshrc file
-echo 'ZSH="/home/harshith/.oh-my-zsh"' > ~/.zshrc
-echo '' > ~/.zshrc
-echo '#Theme' > ~/.zshrc
-echo 'ZSH_THEME=""' > ~/.zshrc
-echo '' > ~/.zshrc
-echo '#Plugins' > ~/.zshrc
-echo 'plugins=(git zsh-autosuggestions)' > ~/.zshrc
-echo 'source $ZSH/oh-my-zsh.sh' > ~/.zshrc
-echo '' > ~/.zshrc
-echo '#Starship' > ~/.zshrc
-echo 'eval "$(starship init zsh)"' > ~/.zshrc
+echo 'ZSH="$HOME/.oh-my-zsh"' > ~/.zshrc
+echo '' >> ~/.zshrc
+echo '#Theme' >> ~/.zshrc
+echo 'ZSH_THEME=""' >> ~/.zshrc
+echo '' >> ~/.zshrc
+echo '#Plugins' >> ~/.zshrc
+echo 'plugins=(git zsh-autosuggestions)' >> ~/.zshrc
+echo 'source $ZSH/oh-my-zsh.sh' >> ~/.zshrc
+echo '' >> ~/.zshrc
+echo '#Starship' >> ~/.zshrc
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 #Source .zshrc
 echo 'Installation complete!'
